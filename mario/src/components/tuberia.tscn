@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj6ekq2nnyxob"]
+
+[ext_resource type="Texture2D" uid="uid://c1tgvmer0qgj" path="res://src/Assets/Mundo/tubo1.png" id="1_bntcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgv0e"]
+size = Vector2(72.0977, 26.4201)
+
+[node name="Tuberia" type="StaticBody2D" groups=["estructura"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bntcw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.17233e-07, -7.18981e-07)
+scale = Vector2(0.471582, 1.21544)
+shape = SubResource("RectangleShape2D_xgv0e")
