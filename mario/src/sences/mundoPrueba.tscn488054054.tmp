@@ -1,0 +1,177 @@
+[gd_scene load_steps=23 format=3 uid="uid://dj8kqd37njfyv"]
+
+[ext_resource type="Texture2D" uid="uid://qj1fu27ty4iv" path="res://src/Assets/Mundo/bloque2.png" id="1_6c7uc"]
+[ext_resource type="Texture2D" uid="uid://dkegmjjn5mjnv" path="res://src/Assets/Mundo/montania.png" id="2_bo0d4"]
+[ext_resource type="Texture2D" uid="uid://g7jbqrvheem0" path="res://src/Assets/Mundo/world_castillo.png" id="3_wdvgm"]
+[ext_resource type="Texture2D" uid="uid://blymblo1jkqrs" path="res://src/Assets/Mundo/pasto.png" id="4_0u43h"]
+[ext_resource type="Texture2D" uid="uid://bc6o2jg33rvy7" path="res://src/Assets/Mundo/nube.png" id="5_pvpeo"]
+[ext_resource type="PackedScene" uid="uid://dqyu60546624r" path="res://src/components/mario.tscn" id="6_43rgp"]
+[ext_resource type="PackedScene" uid="uid://dj6ekq2nnyxob" path="res://src/components/tuberia.tscn" id="7_cxilo"]
+[ext_resource type="PackedScene" uid="uid://dsxyx8kimjx0a" path="res://src/components/hongo1.tscn" id="8_2ykn5"]
+[ext_resource type="PackedScene" uid="uid://c1bbvccq21mnp" path="res://src/components/gomba.tscn" id="9_h4q3a"]
+[ext_resource type="PackedScene" uid="uid://b5o2uxluyr16g" path="res://src/components/BloqueDeLaSuerte.tscn" id="10_bo0d4"]
+[ext_resource type="PackedScene" uid="uid://dd55g1kotoyaj" path="res://src/sences/menu_pausa.tscn" id="12_0u43h"]
+[ext_resource type="AudioStream" uid="uid://cx6wjbbrw5gk2" path="res://src/Sounds/overworld.mp3" id="13_43rgp"]
+[ext_resource type="AudioStream" uid="uid://cq4aphmfyaqs5" path="res://src/Sounds/jump-15984.mp3" id="13_cxilo"]
+[ext_resource type="PackedScene" uid="uid://bo0qmo12eevd0" path="res://src/sences/Resultado.tscn" id="13_pvpeo"]
+[ext_resource type="AudioStream" uid="uid://bbn4lhb1uxq04" path="res://src/Sounds/collect-ring-15982.mp3" id="14_2ykn5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_laik1"]
+texture = ExtResource("1_6c7uc")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nnr6h"]
+texture = ExtResource("2_bo0d4")
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:1/0 = 0
+4:0/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+3:1/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ehd1o"]
+texture = ExtResource("3_wdvgm")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmx1y"]
+texture = ExtResource("4_0u43h")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6c5gl"]
+texture = ExtResource("5_pvpeo")
+margins = Vector2i(6, 0)
+texture_region_size = Vector2i(16, 24)
+1:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7rqb8"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_laik1")
+sources/9 = SubResource("TileSetAtlasSource_6c5gl")
+sources/10 = SubResource("TileSetAtlasSource_ehd1o")
+sources/1 = SubResource("TileSetAtlasSource_nnr6h")
+sources/2 = SubResource("TileSetAtlasSource_hmx1y")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0u43h"]
+size = Vector2(101.897, 58.8153)
+
+[node name="MundoPrueba" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_mirroring = Vector2(360, 0)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+offset_left = 1.0
+offset_right = 360.0
+offset_bottom = 240.0
+color = Color(0.360784, 0.580392, 0.988235, 1)
+
+[node name="MenuPausa" parent="CanvasLayer" instance=ExtResource("12_0u43h")]
+visible = false
+
+[node name="Resultado" parent="CanvasLayer" instance=ExtResource("13_pvpeo")]
+visible = false
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+position = Vector2(-2, 34)
+tile_set = SubResource("TileSet_7rqb8")
+format = 2
+layer_0/tile_data = PackedInt32Array(720934, 0, 0, 720933, 0, 0, 720932, 0, 0, 720931, 0, 0, 720930, 0, 0, 720929, 0, 0, 720928, 0, 0, 720927, 0, 0, 720926, 0, 0, 720925, 0, 0, 720924, 0, 0, 720923, 0, 0, 720922, 0, 0, 720921, 0, 0, 720920, 0, 0, 720919, 0, 0, 720918, 0, 0, 720917, 0, 0, 720916, 0, 0, 720915, 0, 0, 720914, 0, 0, 720913, 0, 0, 720912, 0, 0, 720911, 0, 0, 720910, 0, 0, 720909, 0, 0, 720908, 0, 0, 720907, 0, 0, 720906, 0, 0, 720905, 0, 0, 720904, 0, 0, 720903, 0, 0, 720902, 0, 0, 720901, 0, 0, 720900, 0, 0, 720899, 0, 0, 720898, 0, 0, 720897, 0, 0, 720896, 0, 0, 720935, 0, 0, 720936, 0, 0, 720937, 0, 0, 720938, 0, 0, 720939, 0, 0, 720940, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 786456, 0, 0, 786457, 0, 0, 786458, 0, 0, 786459, 0, 0, 786460, 0, 0, 786461, 0, 0, 786462, 0, 0, 786463, 0, 0, 786464, 0, 0, 786465, 0, 0, 786466, 0, 0, 786467, 0, 0, 786468, 0, 0, 786469, 0, 0, 786470, 0, 0, 786471, 0, 0, 786472, 0, 0, 786473, 0, 0, 786474, 0, 0, 786475, 0, 0, 786476, 0, 0, 524301, 1, 0, 589837, 1, 1, 655373, 1, 2, 524302, 65537, 0, 589838, 65537, 1, 655374, 65537, 2, 524303, 131073, 0, 589839, 131073, 1, 655375, 131073, 2, 524304, 196609, 0, 589840, 196609, 1, 655376, 196609, 2, 524305, 262145, 0, 589841, 262145, 1, 655377, 262145, 2, 524313, 1, 0, 589849, 1, 1, 655385, 1, 2, 524314, 65537, 0, 589850, 65537, 1, 655386, 65537, 2, 524315, 131073, 0, 589851, 131073, 1, 655387, 131073, 2, 524316, 196609, 0, 589852, 196609, 1, 655388, 196609, 2, 524317, 262145, 0, 589853, 262145, 1, 655389, 262145, 2, 655378, 2, 0, 655379, 65538, 0, 655371, 2, 0, 655372, 65538, 0, 655366, 2, 0, 655367, 65538, 0, 655396, 2, 0, 655397, 65538, 0, 655399, 2, 0, 655400, 65538, 0, 65540, 9, 0, 65541, 65545, 0, 131082, 9, 0, 131083, 65545, 0, 327698, 9, 0, 327699, 65545, 0, 65562, 9, 0, 65563, 65545, 0, 262180, 9, 0, 262181, 65545, 0, 327708, 9, 0, 327709, 65545, 0, 393219, 9, 0, 393220, 65545, 0, 393236, 10, 0, 458772, 10, 1, 524308, 10, 2, 589844, 10, 3, 655380, 10, 4, 393237, 65546, 0, 458773, 65546, 1, 524309, 65546, 2, 589845, 65546, 3, 655381, 65546, 4, 393238, 131082, 0, 458774, 131082, 1, 524310, 131082, 2, 589846, 131082, 3, 655382, 131082, 4, 393239, 196618, 0, 458775, 196618, 1, 524311, 196618, 2, 589847, 196618, 3, 655383, 196618, 4, 393240, 262154, 0, 458776, 262154, 1, 524312, 262154, 2, 589848, 262154, 3, 655384, 262154, 4, 720941, 0, 0, 786477, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524328, 0, 0)
+
+[node name="bloqueDeLaSuerte" parent="." instance=ExtResource("10_bo0d4")]
+position = Vector2(502, 170)
+
+[node name="Mario" parent="." instance=ExtResource("6_43rgp")]
+position = Vector2(13, 199)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Tuberia2" parent="Node" groups=["estructuras"] instance=ExtResource("7_cxilo")]
+position = Vector2(69, 194)
+
+[node name="Tuberia3" parent="Node" groups=["estructuras"] instance=ExtResource("7_cxilo")]
+position = Vector2(421, 194)
+
+[node name="Tuberia" parent="Node" groups=["estructuras"] instance=ExtResource("7_cxilo")]
+position = Vector2(256, 194)
+
+[node name="Hongo" parent="." instance=ExtResource("8_2ykn5")]
+position = Vector2(289, 199)
+scale = Vector2(0.972184, 1.04381)
+
+[node name="Gomba" parent="." instance=ExtResource("9_h4q3a")]
+position = Vector2(156, 201)
+
+[node name="Area2D" type="Area2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(325, 173)
+scale = Vector2(0.600749, 0.62379)
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.53605, 1.47961)
+color = Color(0.62, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(51.6023, 30.459)
+scale = Vector2(0.996253, 1.01805)
+shape = SubResource("RectangleShape2D_0u43h")
+
+[node name="salto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_cxilo")
+
+[node name="powerUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_2ykn5")
+
+[node name="PerderPoder" type="AudioStreamPlayer2D" parent="."]
+
+[node name="MuerteTotal" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_43rgp")
+volume_db = -5.748
+autoplay = true
+
+[connection signal="body_entered" from="Area2D" to="CanvasLayer/Resultado" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="CanvasLayer/Resultado" method="_on_area_2d_body_exited"]

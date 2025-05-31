@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1clh4nyw8eq0"]
+
+[ext_resource type="Script" uid="uid://by40m1vm81enw" path="res://src/scripts/resultado.gd" id="1_8dg81"]
+[ext_resource type="FontFile" uid="uid://bm6askaju3ctu" path="res://src/Assets/Fonts/main_font.ttf" id="2_tb1fs"]
+
+[node name="Tadoresul" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8dg81")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(1, 0.431373, 0.231373, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(9.02664, 6.01275)
+color = Color(1, 1, 1, 0.411765)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 85.0
+offset_right = 171.0
+offset_bottom = 186.0
+scale = Vector2(2.08772, 0.857143)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="reiniciar" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "reiniciar"
+
+[node name="salir" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "salir"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 19.0
+offset_right = 622.0
+offset_bottom = 119.0
+scale = Vector2(0.438735, 0.61421)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tb1fs")
+theme_override_font_sizes/font_size = 90
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/salir" to="." method="_on_salir_pressed"]

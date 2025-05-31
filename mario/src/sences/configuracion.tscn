@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcn0id2njfku3"]
+
+[ext_resource type="Script" uid="uid://xpo5fs2ik4f0" path="res://src/scripts/configuracion.gd" id="1_i0eut"]
+[ext_resource type="FontFile" uid="uid://bm6askaju3ctu" path="res://src/Assets/Fonts/main_font.ttf" id="2_86pe5"]
+[ext_resource type="Texture2D" uid="uid://bqucf4q0yg4n4" path="res://src/Assets/Mundo/Mariiiiiiiiio.jpg" id="2_lsqyn"]
+
+[node name="Configuracion" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.997553, 1.00406)
+script = ExtResource("1_i0eut")
+
+[node name="Mariiiiiiiiio" type="Sprite2D" parent="."]
+position = Vector2(181.945, 120.013)
+scale = Vector2(0.452357, 0.533391)
+texture = ExtResource("2_lsqyn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 29.0
+offset_top = 54.0
+offset_right = 240.0
+offset_bottom = 205.0
+scale = Vector2(1.29744, 1.13046)
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_86pe5")
+text = "Sonido"
+
+[node name="sonido" type="HSlider" parent="VBoxContainer"]
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+
+[node name="Mutear" type="CheckButton" parent="VBoxContainer"]
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_86pe5")
+text = "Mutear"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 28.0687
+offset_top = 131.467
+offset_right = 153.069
+offset_bottom = 282.467
+scale = Vector2(2.14569, 0.751975)
+
+[node name="Brillo" type="Label" parent="VBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_86pe5")
+text = "Brillo
+"
+
+[node name="brillo" type="HSlider" parent="VBoxContainer2"]
+modulate = Color(1, 0.0196078, 1, 1)
+layout_mode = 2
+min_value = 0.01
+max_value = 4.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 179.0
+offset_bottom = 35.0
+scale = Vector2(1.92649, 1.85265)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_86pe5")
+theme_override_font_sizes/font_size = 0
+text = "Configuracion"
+
+[node name="Volver" type="Button" parent="."]
+modulate = Color(0, 0, 0, 1)
+top_level = true
+layout_mode = 2
+offset_left = 91.2233
+offset_top = 193.216
+offset_right = 196.223
+offset_bottom = 224.216
+scale = Vector2(1.53066, 1.08292)
+text = "Volver"
+
+[connection signal="changed" from="VBoxContainer/sonido" to="." method="_on_sonido_changed"]
+[connection signal="toggled" from="VBoxContainer/Mutear" to="." method="_on_mutear_toggled"]
+[connection signal="changed" from="VBoxContainer2/brillo" to="." method="_on_brillo_changed"]
+[connection signal="pressed" from="Volver" to="." method="_on_volver_pressed"]
