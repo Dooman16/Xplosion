@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd55g1kotoyaj"]
+
+[ext_resource type="Script" uid="uid://bx8c8wl4bagro" path="res://src/scripts/pausa.gd" id="1_gipa1"]
+
+[node name="MenuPausa" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gipa1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 85.0
+offset_right = 171.0
+offset_bottom = 186.0
+scale = Vector2(2.08772, 0.857143)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="continuar" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "continuar"
+
+[node name="reiniciar" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "reiniciar"
+
+[node name="salir" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "salir"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 33.0
+offset_right = 227.0
+offset_bottom = 56.0
+text = "Menu Pausa"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/continuar" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/salir" to="." method="_on_salir_pressed"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://go5ni3ojg2t0"]
+
+[ext_resource type="Script" uid="uid://2c248i1d5v6g" path="res://src/scripts/menu_principal.gd" id="1_fu6qi"]
+[ext_resource type="AudioStream" uid="uid://cx6wjbbrw5gk2" path="res://src/Sounds/overworld.mp3" id="2_hdt8u"]
+[ext_resource type="Texture2D" uid="uid://tpnssudflx7g" path="res://src/Assets/Mundo/super_mario_bros_fondo.jpg" id="2_w8fun"]
+[ext_resource type="FontFile" uid="uid://bm6askaju3ctu" path="res://src/Assets/Fonts/main_font.ttf" id="3_hekm7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu6qi")
+
+[node name="SuperMarioBrosFondo" type="Sprite2D" parent="."]
+position = Vector2(180, 118)
+scale = Vector2(0.282755, 0.255631)
+texture = ExtResource("2_w8fun")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.79)
+layout_mode = 0
+offset_left = 73.0
+offset_top = 123.0
+offset_right = 432.0
+offset_bottom = 241.0
+scale = Vector2(0.530945, 0.748805)
+
+[node name="Juagr" type="Button" parent="Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 25.3719
+offset_top = 10.8965
+offset_right = 97.3719
+offset_bottom = 35.8965
+scale = Vector2(3.76664, 1.42088)
+theme_override_fonts/font = ExtResource("3_hekm7")
+text = "JUGAR"
+
+[node name="salir" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 35.1303
+offset_top = 81.7235
+offset_right = 107.13
+offset_bottom = 112.723
+scale = Vector2(3.69523, 0.916033)
+theme_override_fonts/font = ExtResource("3_hekm7")
+text = "Salir"
+
+[node name="ajustes" type="Button" parent="Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 29.2753
+offset_top = 50.3961
+offset_right = 94.2753
+offset_bottom = 81.3961
+scale = Vector2(2.76288, 0.913447)
+theme_override_fonts/font = ExtResource("3_hekm7")
+text = "Ajustes"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_hdt8u")
+autoplay = true
+
+[connection signal="pressed" from="Panel/Juagr" to="." method="_on_juagr_pressed"]
+[connection signal="pressed" from="Panel/salir" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="Panel/ajustes" to="." method="_on_ajustes_pressed"]
