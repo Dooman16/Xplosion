@@ -31,8 +31,6 @@ func _on_ataque_body_entered(body: Node2D) -> void:
 		dirMov = "izquierda"
 	elif dirMov == "izquierda":
 		dirMov = "derecha"
-	if body.is_in_group("JugadorGlobal"):
-		body.JuegoTerminado()
 		
 func _on_muerte_body_entered(body: Node2D) -> void:
 	if body.is_in_group("JugadorGlobal"):

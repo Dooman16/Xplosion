@@ -20,12 +20,5 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("estructuras"):
-		if dirMov == "derecha":
-			dirMov = "izquierda"
-		elif dirMov == "izquierda":
-			dirMov = "derecha"
-	elif body.is_in_group("Jugador"):
-		body.comerHongo(tipo)
-		queue_free()
+	print("hola :D")
 	
