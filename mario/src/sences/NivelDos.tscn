@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqasd5d4jnjo5"]
+[gd_scene load_steps=25 format=3 uid="uid://bk5ph8v0fytmx"]
 
 [ext_resource type="PackedScene" uid="uid://dd55g1kotoyaj" path="res://src/sences/menu_pausa.tscn" id="1_bxg2r"]
-[ext_resource type="Script" uid="uid://gq31euystjha" path="res://src/scripts/nivel_dos.gd" id="1_m8xvw"]
 [ext_resource type="PackedScene" uid="uid://d1clh4nyw8eq0" path="res://src/sences/resutuque.tscn" id="2_m8xvw"]
 [ext_resource type="Texture2D" uid="uid://qj1fu27ty4iv" path="res://src/Assets/Mundo/bloque2.png" id="3_mh2ml"]
 [ext_resource type="Texture2D" uid="uid://dkegmjjn5mjnv" path="res://src/Assets/Mundo/montania.png" id="4_dtvgs"]
@@ -17,6 +16,18 @@
 [ext_resource type="AudioStream" uid="uid://bwcymij3sw0k0" path="res://src/Sounds/negative_beeps-6008.mp3" id="15_e6ufg"]
 [ext_resource type="AudioStream" uid="uid://bgt4t5rc6gv8f" path="res://src/Sounds/dead-8bit-41400.mp3" id="16_trafq"]
 [ext_resource type="AudioStream" uid="uid://cx6wjbbrw5gk2" path="res://src/Sounds/overworld.mp3" id="17_o43up"]
+
+[sub_resource type="GDScript" id="GDScript_yv7f6"]
+script/source = "extends Node2D
+
+func _on_zona_nivel_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"JugadorGlobal\"):
+		GameData.EnAreaDeVictoria=true
+
+func _on_zona_nivel_2_body_exited(body: Node2D) -> void:
+	if body.is_in_group(\"JugadorGlobal\"):
+		GameData.EnAreaDeVictoria=false
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yv7f6"]
 texture = ExtResource("3_mh2ml")
@@ -93,7 +104,7 @@ sources/2 = SubResource("TileSetAtlasSource_mh2ml")
 size = Vector2(101.897, 58.8153)
 
 [node name="NivelDos" type="Node2D"]
-script = ExtResource("1_m8xvw")
+script = SubResource("GDScript_yv7f6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

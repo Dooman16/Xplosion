@@ -1,24 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqyu60546624r"]
+[gd_scene load_steps=17 format=3 uid="uid://dqyu60546624r"]
 
 [ext_resource type="Texture2D" uid="uid://ldhfgcxhgvrm" path="res://src/Assets/Mario/small.png" id="1_3p5at"]
-[ext_resource type="Script" uid="uid://c6f5tpx1lgmhh" path="res://src/scripts/mario.gd" id="1_g8hat"]
+[ext_resource type="Script" uid="uid://c6f5tpx1lgmhh" path="res://src/scripts/player_movement.gd" id="1_g8hat"]
 [ext_resource type="Texture2D" uid="uid://bcvkuhgh14d8w" path="res://src/Assets/Mario/big.png" id="3_24p5y"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c2qdg"]
-atlas = ExtResource("1_3p5at")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rfflm"]
-atlas = ExtResource("1_3p5at")
-region = Rect2(32, 0, 16, 16)
+[ext_resource type="PackedScene" uid="uid://c650tofwr83sy" path="res://src/sences/Xplosion.tscn" id="4_vaykk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfkym"]
 atlas = ExtResource("1_3p5at")
 region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w3cif"]
-atlas = ExtResource("1_3p5at")
-region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6yj6"]
 atlas = ExtResource("3_24p5y")
@@ -40,37 +29,30 @@ region = Rect2(0, 0, 16, 32)
 atlas = ExtResource("3_24p5y")
 region = Rect2(80, 0, 16, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3cif"]
+atlas = ExtResource("1_3p5at")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_f2w7q"]
 atlas = ExtResource("1_3p5at")
 region = Rect2(80, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2qdg"]
+atlas = ExtResource("1_3p5at")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfflm"]
+atlas = ExtResource("1_3p5at")
+region = Rect2(32, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dfkym"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c2qdg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rfflm")
-}],
-"loop": true,
-"name": &"caminar",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dfkym")
 }],
 "loop": true,
 "name": &"dead",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w3cif")
-}],
-"loop": true,
-"name": &"default",
 "speed": 5.0
 }, {
 "frames": [{
@@ -105,35 +87,65 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w3cif")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_f2w7q")
 }],
 "loop": true,
-"name": &"salto",
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2qdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfflm")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3cif"]
-size = Vector2(15.2892, 16)
+size = Vector2(11.4669, 15)
 
 [node name="Mario" type="CharacterBody2D" groups=["Jugador", "JugadorGlobal"]]
-position = Vector2(-8, -2)
-collision_mask = 3
+collision_layer = 128
+collision_mask = 11
 script = ExtResource("1_g8hat")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(8, 2)
 sprite_frames = SubResource("SpriteFrames_dfkym")
-animation = &"caminar"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 2)
 scale = Vector2(1.04649, 1)
 shape = SubResource("RectangleShape2D_w3cif")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(8, 2)
 scale = Vector2(-14.5854, 1.6535)
 limit_left = 0
 limit_top = 0
 limit_bottom = 0
+
+[node name="CoyoteTime" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="InputBuffer" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="knockback" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Xplosion" parent="." instance=ExtResource("4_vaykk")]
+
+[connection signal="timeout" from="CoyoteTime" to="." method="_on_coyote_time_timeout"]
+[connection signal="timeout" from="InputBuffer" to="." method="_on_input_buffer_timeout"]
