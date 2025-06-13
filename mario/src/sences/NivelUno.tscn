@@ -1,6 +1,5 @@
-[gd_scene load_steps=25 format=3 uid="uid://d2wrp4783eu1a"]
+[gd_scene load_steps=25 format=3 uid="uid://bca0ubvsuejsy"]
 
-[ext_resource type="Script" uid="uid://ch4q7tqan1ytc" path="res://src/scripts/nivel_uno.gd" id="1_hluob"]
 [ext_resource type="PackedScene" uid="uid://dd55g1kotoyaj" path="res://src/sences/menu_pausa.tscn" id="1_pk5tq"]
 [ext_resource type="PackedScene" uid="uid://d1clh4nyw8eq0" path="res://src/sences/resutuque.tscn" id="2_hluob"]
 [ext_resource type="Texture2D" uid="uid://qj1fu27ty4iv" path="res://src/Assets/Mundo/bloque2.png" id="3_5wd77"]
@@ -17,6 +16,19 @@
 [ext_resource type="AudioStream" uid="uid://bwcymij3sw0k0" path="res://src/Sounds/negative_beeps-6008.mp3" id="15_4lxvt"]
 [ext_resource type="AudioStream" uid="uid://bgt4t5rc6gv8f" path="res://src/Sounds/dead-8bit-41400.mp3" id="16_wiujm"]
 [ext_resource type="AudioStream" uid="uid://cx6wjbbrw5gk2" path="res://src/Sounds/overworld.mp3" id="17_h4sh0"]
+
+[sub_resource type="GDScript" id="GDScript_0pnil"]
+script/source = "extends Node2D
+
+
+func _on_zona_nivel_1_body_exited(body: Node2D) -> void:
+	if body.is_in_group(\"JugadorGlobal\"):
+		GameData.EnAreaDeVictoria=false
+
+func _on_zona_nivel_1_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"JugadorGlobal\"):
+		GameData.EnAreaDeVictoria=true
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0pnil"]
 texture = ExtResource("3_5wd77")
@@ -93,7 +105,7 @@ sources/2 = SubResource("TileSetAtlasSource_5wd77")
 size = Vector2(101.897, 58.8153)
 
 [node name="Nivel1" type="Node2D"]
-script = ExtResource("1_hluob")
+script = SubResource("GDScript_0pnil")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -6,6 +6,7 @@
 size = Vector2(72.0977, 26.4201)
 
 [node name="Tuberia" type="StaticBody2D" groups=["estructura"]]
+collision_mask = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bntcw")

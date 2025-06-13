@@ -6,7 +6,7 @@ extends Control
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	if mario != null:
-		mario.murio.connect(on_muerte)
+		mario.death.connect(on_muerte)
 	visible = false
 	
 func on_muerte():

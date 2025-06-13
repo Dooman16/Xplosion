@@ -17,16 +17,13 @@ func _physics_process(delta):
 		if not is_on_floor():
 			velocity.y += gravedad*delta
 		if dirMov == "derecha":
-			velocity.x = 1 * velocidad
+			velocity.x = velocidad
 			if not raycast2dDerecho.is_colliding():
 				dirMov="izquierda"
-			move_and_slide()
-			return
 		else:
 			velocity.x = -1 * velocidad
 			if not raycast2dIzuierdo.is_colliding():
 				dirMov="derecha"
-			move_and_slide()
 		move_and_slide()
 		
 func _on_ataque_body_entered(body: Node2D) -> void:
@@ -34,8 +31,6 @@ func _on_ataque_body_entered(body: Node2D) -> void:
 		dirMov = "izquierda"
 	elif dirMov == "izquierda":
 		dirMov = "derecha"
-	if body.is_in_group("JugadorGlobal"):
-		body.JuegoTerminado()
 		
 func _on_muerte_body_entered(body: Node2D) -> void:
 	if body.is_in_group("JugadorGlobal"):
