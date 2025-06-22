@@ -25,6 +25,8 @@ var jumped_last_frame = false
 #hay un bug que te deja hacer doble salto si ambos timers no terminan lol!!!!!
 func _physics_process(delta: float) -> void:
 	
+	print(position.y)
+	
 	jumped_last_frame = jumped_this_frame
 	jumped_this_frame = false
 	# Add the gravity.
@@ -75,9 +77,9 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if direction > 0:
-		animations.flip_h = false
-	elif direction < 0:
 		animations.flip_h = true
+	elif direction < 0:
+		animations.flip_h = false
 	
 	if not is_on_floor():
 		animations.play("jump")

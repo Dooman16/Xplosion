@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dqyu60546624r" path="res://src/components/mario.tscn" id="6_43rgp"]
 [ext_resource type="PackedScene" uid="uid://dj6ekq2nnyxob" path="res://src/components/tuberia.tscn" id="7_cxilo"]
 [ext_resource type="PackedScene" uid="uid://dsxyx8kimjx0a" path="res://src/components/hongo1.tscn" id="8_2ykn5"]
-[ext_resource type="PackedScene" uid="uid://c1bbvccq21mnp" path="res://src/components/gomba.tscn" id="9_h4q3a"]
+[ext_resource type="PackedScene" uid="uid://c1bbvccq21mnp" path="res://src/components/knight.tscn" id="9_h4q3a"]
 [ext_resource type="PackedScene" uid="uid://b5o2uxluyr16g" path="res://src/components/BloqueDeLaSuerte.tscn" id="10_bo0d4"]
 [ext_resource type="PackedScene" uid="uid://dd55g1kotoyaj" path="res://src/sences/menu_pausa.tscn" id="12_0u43h"]
 [ext_resource type="AudioStream" uid="uid://cx6wjbbrw5gk2" path="res://src/Sounds/overworld.mp3" id="13_43rgp"]
