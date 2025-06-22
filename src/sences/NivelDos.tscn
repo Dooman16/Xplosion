@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://blymblo1jkqrs" path="res://src/Assets/Mundo/pasto.png" id="6_4vlds"]
 [ext_resource type="Texture2D" uid="uid://bc6o2jg33rvy7" path="res://src/Assets/Mundo/nube.png" id="7_r5f3y"]
 [ext_resource type="PackedScene" uid="uid://b5o2uxluyr16g" path="res://src/components/BloqueDeLaSuerte.tscn" id="8_s5q16"]
-[ext_resource type="PackedScene" uid="uid://dqyu60546624r" path="res://src/components/mario.tscn" id="9_qioj8"]
+[ext_resource type="PackedScene" uid="uid://dqyu60546624r" path="res://src/components/BaldMan.tscn" id="9_qioj8"]
 [ext_resource type="PackedScene" uid="uid://dj6ekq2nnyxob" path="res://src/components/tuberia.tscn" id="10_82utk"]
 [ext_resource type="PackedScene" uid="uid://c1bbvccq21mnp" path="res://src/components/knight.tscn" id="12_cgohq"]
 [ext_resource type="AudioStream" uid="uid://cq4aphmfyaqs5" path="res://src/Sounds/jump-15984.mp3" id="13_yaodx"]

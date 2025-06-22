@@ -4,12 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://boi4hlu6b5pk7" path="res://src/Assets/lanzaS/GoldenSpearsWenrexa/2200x300px/52.png" id="2_ltfsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edx6t"]
-size = Vector2(45, 4)
+size = Vector2(45, 1)
 
 [node name="Xplosion" type="Node2D"]
+z_index = 1
 script = ExtResource("1_ltfsh")
 
 [node name="Xplosion" type="Area2D" parent="."]
+collision_layer = 129
 
 [node name="hitbox" type="CollisionShape2D" parent="Xplosion"]
 position = Vector2(22.5, 0)
@@ -18,7 +20,7 @@ debug_color = Color(3.65794e-06, 0.505879, 0.59151, 0.42)
 
 [node name="ColorRect" type="Sprite2D" parent="Xplosion/hitbox"]
 position = Vector2(-22.5, 0)
-scale = Vector2(0.045, 0.045)
+scale = Vector2(0.044, 0.044)
 texture = ExtResource("2_ltfsh")
 
 [connection signal="area_entered" from="Xplosion" to="." method="_on_area_entered"]

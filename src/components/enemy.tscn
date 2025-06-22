@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckjsmjo2fvyv3"]
+[gd_scene load_steps=6 format=3 uid="uid://ckjsmjo2fvyv3"]
 
 [ext_resource type="Script" uid="uid://dm8bxdmwf5jso" path="res://src/scripts/enemy.gd" id="1_7k104"]
+[ext_resource type="PackedScene" uid="uid://djmmeokr07dd0" path="res://src/components/hit_manager.tscn" id="2_b6tqv"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4gyqm"]
 
@@ -24,22 +25,24 @@ texture = SubResource("CanvasTexture_4gyqm")
 position = Vector2(33, 55)
 shape = SubResource("RectangleShape2D_qi2p4")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="core" type="Area2D" parent="."]
 modulate = Color(1, 0, 1, 1)
 self_modulate = Color(1, 0, 1, 1)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="core"]
 modulate = Color(1, 0, 1, 1)
 self_modulate = Color(1, 0, 1, 1)
 position = Vector2(1, 30)
 shape = SubResource("RectangleShape2D_iifgy")
 
-[node name="ColorRect" type="ColorRect" parent="Area2D/CollisionShape2D"]
+[node name="ColorRect" type="ColorRect" parent="core/CollisionShape2D"]
 offset_left = -10.0
 offset_top = -8.0
 offset_right = 10.0
 offset_bottom = 8.0
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="HitManager" parent="." instance=ExtResource("2_b6tqv")]
+MAX_LIFE = 100
+MAX_CORE_HIT_AMOUNT = 2
