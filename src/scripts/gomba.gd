@@ -33,12 +33,15 @@ func _on_ataque_body_entered(body: Node2D) -> void:
 		dirMov = "derecha"
 		
 func _on_muerte_body_entered(body: Node2D) -> void:
-	if body.is_in_group("JugadorGlobal"):
-		queue_free()
+	queue_free()
 
 func muerte():
 	$AnimatedSprite2D.play("Morte")
 	await get_tree().create_timer(5).timeout
 	estaVivo=false
 	audio_stream_player_2d.play()
+	queue_free()
+
+
+func _on_muerte_area_entered(area: Area2D) -> void:
 	queue_free()
