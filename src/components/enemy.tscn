@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckjsmjo2fvyv3"]
+
+[ext_resource type="Script" uid="uid://dm8bxdmwf5jso" path="res://src/scripts/enemy.gd" id="1_7k104"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4gyqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
+size = Vector2(62, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
+size = Vector2(20, 16)
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_7k104")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32.75, 54.75)
+scale = Vector2(62.5, 110.5)
+texture = SubResource("CanvasTexture_4gyqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(33, 55)
+shape = SubResource("RectangleShape2D_qi2p4")
+
+[node name="Area2D" type="Area2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+self_modulate = Color(1, 0, 1, 1)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color(1, 0, 1, 1)
+self_modulate = Color(1, 0, 1, 1)
+position = Vector2(1, 30)
+shape = SubResource("RectangleShape2D_iifgy")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D/CollisionShape2D"]
+offset_left = -10.0
+offset_top = -8.0
+offset_right = 10.0
+offset_bottom = 8.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
