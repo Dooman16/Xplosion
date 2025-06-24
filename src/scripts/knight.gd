@@ -10,12 +10,14 @@ var attacking:bool = false
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var raycast2dDerecho: RayCast2D = $RayCast2DDerecho
 @onready var raycast2dIzuierdo: RayCast2D = $RayCast2DIzuierdo
+@onready var progress_bar: ProgressBar = $ProgressBar
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
 	$HitManager.managable_entity = self
 	
 func _physics_process(delta):
+	progress_bar.value=$HitManager.life
 	if $range.is_colliding() and not attacking:
 		attack()
 	if estaVivo and not attacking:

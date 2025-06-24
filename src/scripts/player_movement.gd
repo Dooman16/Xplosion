@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -375
 const KNOCKBACK_SPEED = Vector2(100,-200)
@@ -8,6 +7,7 @@ const KNOCKBACK_SPEED = Vector2(100,-200)
 @onready var coyote_time: Timer = $CoyoteTime
 @onready var input_buffer: Timer = $InputBuffer
 @onready var animations: AnimatedSprite2D = $Animations
+@onready var progress_bar: ProgressBar = $ProgressBar
 
 signal on_player_jump
 signal death
@@ -24,12 +24,11 @@ var jumped_last_frame = false
 
 func _ready() -> void:
 	$HitManager.managable_entity = self
-
 #hay un bug que te deja hacer doble salto si ambos timers no terminan lol!!!!!
 func _physics_process(delta: float) -> void:
-	
 	print(position.y)
-	
+	progress_bar.value=$HitManager.life
+
 	jumped_last_frame = jumped_this_frame
 	jumped_this_frame = false
 	# Add the gravity.
@@ -38,16 +37,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		is_y_velocity_reset = false
 	
-
-	
-	
 	if Input.is_action_just_pressed("player_jump"):
 		is_jumping_held = true
 		jump_buffered = true
 		input_buffer.start()
-	
-	
-	
 	
 	# Handle jump.
 	if jump_buffered and (is_on_floor() or has_recently_fallen_off_edge):
@@ -77,7 +70,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	
 	
 	if direction > 0:
 		animations.flip_h = true
