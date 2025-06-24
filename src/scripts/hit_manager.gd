@@ -1,7 +1,7 @@
 extends Node
 
-@export var MAX_LIFE : int = 100
-@export var MAX_CORE_HIT_AMOUNT : int = 3
+@export var MAX_LIFE : int 
+@export var MAX_CORE_HIT_AMOUNT : int 
 
 var life : int
 var core_hit_amount : int
