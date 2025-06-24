@@ -206,6 +206,7 @@ one_shot = true
 [node name="Xplosion" parent="." instance=ExtResource("4_vaykk")]
 
 [node name="HitManager" parent="." instance=ExtResource("17_ktr20")]
+MAX_LIFE = 100
 MAX_CORE_HIT_AMOUNT = 100
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
