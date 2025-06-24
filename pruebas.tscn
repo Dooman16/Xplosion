@@ -1,6 +1,5 @@
-[gd_scene load_steps=31 format=3 uid="uid://bih23rsmn5fd1"]
+[gd_scene load_steps=30 format=3 uid="uid://bih23rsmn5fd1"]
 
-[ext_resource type="Texture2D" path="res://src/Assets/pelado/small.png" id="1_er348"]
 [ext_resource type="Texture2D" uid="uid://x13v8vtbnyej" path="res://src/Assets/pelado/guyidle-Sheet.png" id="2_5be4m"]
 [ext_resource type="Texture2D" uid="uid://bdjp77oa3kfya" path="res://src/Assets/pelado/guybattleidle-Sheet.png" id="3_xbc7m"]
 [ext_resource type="Texture2D" uid="uid://c5hrvatayrxnd" path="res://src/Assets/pelado/guywalk-2.png" id="4_a8rqw"]
@@ -17,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://cctkaeajl3sed" path="res://src/Assets/pelado/guywalk-13.png" id="15_upl3r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfkym"]
-atlas = ExtResource("1_er348")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbcl6"]

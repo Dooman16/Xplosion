@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckjsmjo2fvyv3"]
+[gd_scene load_steps=8 format=3 uid="uid://ckjsmjo2fvyv3"]
 
 [ext_resource type="Script" uid="uid://dm8bxdmwf5jso" path="res://src/scripts/enemy.gd" id="1_7k104"]
 [ext_resource type="PackedScene" uid="uid://djmmeokr07dd0" path="res://src/components/hit_manager.tscn" id="2_b6tqv"]
@@ -10,6 +10,12 @@ size = Vector2(62, 110)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
 size = Vector2(20, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6tqv"]
+bg_color = Color(0.0431373, 0.0980392, 0.0666667, 0.627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv31c"]
+bg_color = Color(0, 1, 0, 1)
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 3
@@ -44,5 +50,14 @@ offset_right = 10.0
 offset_bottom = 8.0
 
 [node name="HitManager" parent="." instance=ExtResource("2_b6tqv")]
-MAX_LIFE = 100
 MAX_CORE_HIT_AMOUNT = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -27.0
+offset_top = 111.0
+offset_right = 1046.0
+offset_bottom = 235.0
+scale = Vector2(0.122075, 0.120884)
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_b6tqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mv31c")

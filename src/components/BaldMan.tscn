@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dqyu60546624r"]
+[gd_scene load_steps=35 format=3 uid="uid://dqyu60546624r"]
 
 [ext_resource type="Script" uid="uid://c6f5tpx1lgmhh" path="res://src/scripts/player_movement.gd" id="1_g8hat"]
 [ext_resource type="Texture2D" uid="uid://x13v8vtbnyej" path="res://src/Assets/pelado/guyidle-Sheet.png" id="3_ryo25"]
@@ -166,6 +166,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3cif"]
 size = Vector2(6.68903, 28)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktr20"]
+bg_color = Color(0.0431373, 0.0980392, 0.0666667, 0.627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cf154"]
+bg_color = Color(0, 1, 0, 1)
+
 [node name="BaldMAn" type="CharacterBody2D" groups=["Jugador", "JugadorGlobal"]]
 collision_layer = 128
 collision_mask = 11
@@ -200,8 +206,18 @@ one_shot = true
 [node name="Xplosion" parent="." instance=ExtResource("4_vaykk")]
 
 [node name="HitManager" parent="." instance=ExtResource("17_ktr20")]
-MAX_LIFE = 100
 MAX_CORE_HIT_AMOUNT = 100
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -22.0
+offset_top = 17.0
+offset_right = 365.0
+offset_bottom = 40.0
+scale = Vector2(0.122075, 0.120884)
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_ktr20")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cf154")
+value = 60.0
 
 [connection signal="timeout" from="CoyoteTime" to="." method="_on_coyote_time_timeout"]
 [connection signal="timeout" from="InputBuffer" to="." method="_on_input_buffer_timeout"]
