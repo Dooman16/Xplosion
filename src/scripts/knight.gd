@@ -15,9 +15,13 @@ var attacking:bool = false
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
 	$HitManager.managable_entity = self
+	$HitManager.Hitted.connect(actualizarBarra)
+	actualizarBarra()
+
+func actualizarBarra():
+	progress_bar.value=$HitManager.life
 	
 func _physics_process(delta):
-	progress_bar.value=$HitManager.life
 	if $range.is_colliding() and not attacking:
 		attack()
 	if estaVivo and not attacking:
