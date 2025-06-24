@@ -50,6 +50,7 @@ offset_right = 10.0
 offset_bottom = 8.0
 
 [node name="HitManager" parent="." instance=ExtResource("2_b6tqv")]
+MAX_LIFE = 100
 MAX_CORE_HIT_AMOUNT = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
