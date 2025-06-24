@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var body := $Xplosion
 
-const RECOVERY_AREA = 20
+const RECOVERY_AREA = 10
 const RETURN_SPEED = -500
 const MAX_RETRACTION_DISTANCE := 20
 const MAX_ATTACK_RANGE := 45
@@ -13,6 +13,7 @@ const ATTACK_COOLDOWN := 1.2
 const MELEE_ATTACK_CHARGING_TIME := 0.1
 const DIRECTION := Vector2(1, 0)
 const STARTING_POS = Vector2(0,0)
+const DAMAGE = 2
 
 var distance_covered = 0.0
 var charge := 0.0
@@ -55,15 +56,20 @@ func charge_range_attack(delta: float):
 	global_rotation = get_xplosion_rotation(get_mouse_vectorial_difference())
 
 func release_range_attack():
-	distance_covered = 0
-	speed = charge * 30
-	charge = 0.0
-	var pos_save = body.global_position
-	var rot_save = body.global_rotation
-	remove_child(body)
-	get_tree().current_scene.add_child(body)
-	body.global_position = pos_save
-	body.global_rotation = rot_save
+	if charge / MAX_RETRACTION_DISTANCE >= 0.3:
+		distance_covered = 0
+		speed = charge * 30
+		charge = 0.0
+		var pos_save = body.global_position
+		var rot_save = body.global_rotation
+		remove_child(body)
+		get_tree().current_scene.add_child(body)
+		body.global_position = pos_save
+		body.global_rotation = rot_save
+	else:
+		charge = 0 
+		body.position = STARTING_POS
+		
 
 func melee_attack(delta: float):
 	const MELEE_SPEED = MAX_RETRACTION_DISTANCE / MELEE_ATTACK_CHARGING_TIME
@@ -140,7 +146,12 @@ func activate_hitbox():
 func disable_hitbox():
 	body.get_node("hitbox").disabled = true
 
-func what_to_do_if_you_hit_something(something : Node2D):
+func what_to_do_if_you_hit_something(something : Node2D):	
+	var type = Enums.type.CORE if something.name == "core" and not meleeing else Enums.type.BODY
+	if type != Enums.type.BODY:
+		something = something.get_parent()
+	if something.is_in_group("enemies"):
+		something.get_node("HitManager").what_to_do_if_you_get_hit(type,DAMAGE,global_position)
 	disable_hitbox()
 	if speed > 0:
 		return_lance()

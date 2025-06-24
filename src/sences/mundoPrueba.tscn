@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://g7jbqrvheem0" path="res://src/Assets/Mundo/world_castillo.png" id="3_wdvgm"]
 [ext_resource type="Texture2D" uid="uid://blymblo1jkqrs" path="res://src/Assets/Mundo/pasto.png" id="4_0u43h"]
 [ext_resource type="Texture2D" uid="uid://bc6o2jg33rvy7" path="res://src/Assets/Mundo/nube.png" id="5_pvpeo"]
-[ext_resource type="PackedScene" uid="uid://dqyu60546624r" path="res://src/components/mario.tscn" id="6_43rgp"]
+[ext_resource type="PackedScene" uid="uid://dqyu60546624r" path="res://src/components/BaldMan.tscn" id="6_43rgp"]
 [ext_resource type="PackedScene" uid="uid://dj6ekq2nnyxob" path="res://src/components/tuberia.tscn" id="7_cxilo"]
 [ext_resource type="PackedScene" uid="uid://dsxyx8kimjx0a" path="res://src/components/hongo1.tscn" id="8_2ykn5"]
 [ext_resource type="PackedScene" uid="uid://c1bbvccq21mnp" path="res://src/components/knight.tscn" id="9_h4q3a"]
