@@ -24,10 +24,13 @@ var jumped_last_frame = false
 
 func _ready() -> void:
 	$HitManager.managable_entity = self
+	$HitManager.Hitted.connect(actualizarBarra)
+	actualizarBarra()
+	#se conecta la señal y se actualiza la barra por primera vez, para que tenga barra de la vida completa del principio
+	
 #hay un bug que te deja hacer doble salto si ambos timers no terminan lol!!!!!
 func _physics_process(delta: float) -> void:
 	print(position.y)
-	progress_bar.value=$HitManager.life
 
 	jumped_last_frame = jumped_this_frame
 	jumped_this_frame = false
@@ -85,6 +88,9 @@ func _physics_process(delta: float) -> void:
 	
 	was_on_floor = is_on_floor()
 	move_and_slide()
+
+func actualizarBarra():
+	progress_bar.value=$HitManager.life
 
 func slow_upward_movement():
 	is_y_velocity_reset = true
