@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c1bbvccq21mnp"]
+[gd_scene load_steps=61 format=3 uid="uid://c1bbvccq21mnp"]
 
 [ext_resource type="Script" uid="uid://dusa47er710fc" path="res://src/scripts/knight.gd" id="1_su3y7"]
 [ext_resource type="Texture2D" uid="uid://bj2i3pvy6mqoc" path="res://src/Assets/Enemies/enemigo Basico/Attack 1.png" id="2_jee8n"]
@@ -360,6 +360,12 @@ size = Vector2(27.25, 24.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_su3y7"]
 size = Vector2(3, 2.66667)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7j0b"]
+bg_color = Color(0.0431373, 0.0980392, 0.0666667, 0.627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53rde"]
+bg_color = Color(0, 1, 0, 1)
+
 [node name="knight" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 collision_layer = 3
@@ -436,6 +442,16 @@ one_shot = true
 
 [node name="Explosion" parent="." instance=ExtResource("8_d1kg2")]
 position = Vector2(2, 2)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -13.3333
+offset_top = 12.6667
+offset_right = 204.667
+offset_bottom = 35.6667
+scale = Vector2(0.122075, 0.120884)
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_g7j0b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_53rde")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Ataque" to="." method="_on_ataque_body_entered"]
