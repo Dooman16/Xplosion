@@ -11,6 +11,7 @@ var posicionInicial: Vector2
 
 func _ready():
 	posicionInicial = global_position
+	$HitManager.managable_entity = self
 
 func _physics_process(delta: float) -> void:
 	velocity.x = direction * speed
@@ -25,6 +26,3 @@ func _physics_process(delta: float) -> void:
 
 func kill():
 	queue_free()
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	kill()

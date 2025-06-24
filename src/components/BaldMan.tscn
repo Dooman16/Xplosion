@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dqyu60546624r"]
+[gd_scene load_steps=33 format=3 uid="uid://dqyu60546624r"]
 
 [ext_resource type="Script" uid="uid://c6f5tpx1lgmhh" path="res://src/scripts/player_movement.gd" id="1_g8hat"]
 [ext_resource type="Texture2D" uid="uid://x13v8vtbnyej" path="res://src/Assets/pelado/guyidle-Sheet.png" id="3_ryo25"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cmo7nw5fm2yir" path="res://src/Assets/pelado/guywalk-11.png" id="14_p5c4b"]
 [ext_resource type="Texture2D" uid="uid://cm6pacspqxd24" path="res://src/Assets/pelado/guywalk-12.png" id="15_ochlm"]
 [ext_resource type="Texture2D" uid="uid://cctkaeajl3sed" path="res://src/Assets/pelado/guywalk-13.png" id="16_huw2a"]
+[ext_resource type="PackedScene" uid="uid://djmmeokr07dd0" path="res://src/components/hit_manager.tscn" id="17_ktr20"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24p5y"]
 atlas = ExtResource("3_ryo25")
@@ -192,10 +193,16 @@ wait_time = 0.1
 [node name="InputBuffer" type="Timer" parent="."]
 wait_time = 0.15
 
-[node name="knockback" type="Timer" parent="."]
+[node name="iFrames" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [node name="Xplosion" parent="." instance=ExtResource("4_vaykk")]
 
+[node name="HitManager" parent="." instance=ExtResource("17_ktr20")]
+MAX_LIFE = 100
+MAX_CORE_HIT_AMOUNT = 100
+
 [connection signal="timeout" from="CoyoteTime" to="." method="_on_coyote_time_timeout"]
 [connection signal="timeout" from="InputBuffer" to="." method="_on_input_buffer_timeout"]
+[connection signal="timeout" from="iFrames" to="." method="_on_i_frames_timeout"]

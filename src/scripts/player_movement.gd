@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -375
+const KNOCKBACK_SPEED = Vector2(100,-200)
 
 @onready var coyote_time: Timer = $CoyoteTime
 @onready var input_buffer: Timer = $InputBuffer
@@ -21,6 +22,8 @@ var is_y_velocity_reset = false
 var jumped_this_frame = false
 var jumped_last_frame = false
 
+func _ready() -> void:
+	$HitManager.managable_entity = self
 
 #hay un bug que te deja hacer doble salto si ambos timers no terminan lol!!!!!
 func _physics_process(delta: float) -> void:
@@ -69,7 +72,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("player_move_left", "player_move_right")
-	if $knockback.is_stopped():
+	if $iFrames.is_stopped():
 		if direction:
 			velocity.x = direction * SPEED
 		else:
@@ -114,10 +117,20 @@ func force_finish_timer(timer:Timer):
 	timer.stop()
 	timer.emit_signal("timeout")
 
+func disable_hitbox(x_direction):
+	$CollisionShape2D.disabled = true
+	velocity = KNOCKBACK_SPEED
+	velocity.x *= x_direction
+	$iFrames.start()
+
 func reset_position(destination):
 	global_position = destination
 	force_finish_timer(coyote_time)
 	force_finish_timer(input_buffer)
 
-func knockback():
-	$knockback.start()
+
+func _on_i_frames_timeout() -> void:
+	$CollisionShape2D.disabled = false
+
+func kill():
+	get_tree().change_scene_to_file("res://src/sences/MenuPrinc.tscn")
