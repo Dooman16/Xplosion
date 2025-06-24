@@ -452,6 +452,7 @@ scale = Vector2(0.122075, 0.120884)
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_styles/background = SubResource("StyleBoxFlat_g7j0b")
 theme_override_styles/fill = SubResource("StyleBoxFlat_53rde")
+max_value = 20.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Ataque" to="." method="_on_ataque_body_entered"]
