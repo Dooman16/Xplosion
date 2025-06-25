@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var body := $Xplosion
+@onready var camera := $Camera2D
 
 const RECOVERY_AREA = 10
 const RETURN_SPEED = -500
@@ -13,7 +14,7 @@ const ATTACK_COOLDOWN := 1.2
 const MELEE_ATTACK_CHARGING_TIME := 0.1
 const DIRECTION := Vector2(1, 0)
 const STARTING_POS = Vector2(0,0)
-const DAMAGE = 2
+const DAMAGE = 1
 
 var distance_covered = 0.0
 var charge := 0.0
@@ -24,6 +25,11 @@ var thrown := false
 var last_position := Vector2.ZERO
 var throwing_direction := Vector2.ZERO
 
+enum state{
+	THROWN,
+	ATTACH
+}
+
 func _ready():
 	# Conectar señales del área de colisión
 	body.connect("area_entered", Callable(self, "_on_area_entered"))
@@ -32,11 +38,11 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if speed == 0:
-		if Input.is_action_pressed("left_attack"):
+		if Input.is_action_pressed("left_attack") and not meleeing :
 			charge_range_attack(delta)
 		elif Input.is_action_just_released("left_attack"):
 			release_range_attack()
-		if Input.is_action_pressed("right_attack"):
+		elif Input.is_action_pressed("right_attack") and charge == 0:
 			meleeing = true
 	else:
 		move(delta)
@@ -57,6 +63,7 @@ func charge_range_attack(delta: float):
 
 func release_range_attack():
 	if charge / MAX_RETRACTION_DISTANCE >= 0.3:
+		transferCamera(state.THROWN)
 		distance_covered = 0
 		speed = charge * 30
 		charge = 0.0
@@ -111,6 +118,7 @@ func move(delta: float):
 		body.global_position += return_direction*speed*delta/speed_multiplayer
 		print(distance_covered)
 		if distance_covered < 2:
+			transferCamera(state.ATTACH)
 			get_tree().current_scene.remove_child(body)
 			add_child(body)
 			body.position = STARTING_POS
@@ -151,12 +159,19 @@ func what_to_do_if_you_hit_something(something : Node2D):
 	if type != Enums.type.BODY:
 		something = something.get_parent()
 	if something.is_in_group("enemies"):
-		something.get_node("HitManager").what_to_do_if_you_get_hit(type,DAMAGE,global_position)
+		if something.estaVivo:
+			something.get_node("HitManager").what_to_do_if_you_get_hit(type,DAMAGE,global_position)
 	disable_hitbox()
 	if speed > 0:
 		return_lance()
-func charge_hook():
-	pass
-
-func release_hook():
-	pass
+		
+func transferCamera(estado: state):
+	if estado == state.THROWN:
+		remove_child(camera)
+		body.add_child(camera)
+		camera.position = STARTING_POS
+	else:
+		body.remove_child(camera)
+		add_child(camera)
+		camera.position = STARTING_POS
+	

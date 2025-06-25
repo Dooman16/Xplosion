@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c1bbvccq21mnp"]
+[gd_scene load_steps=59 format=3 uid="uid://c1bbvccq21mnp"]
 
 [ext_resource type="Script" uid="uid://dusa47er710fc" path="res://src/scripts/knight.gd" id="1_su3y7"]
 [ext_resource type="Texture2D" uid="uid://bj2i3pvy6mqoc" path="res://src/Assets/Enemies/enemigo Basico/Attack 1.png" id="2_jee8n"]
@@ -217,7 +217,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h25ar")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 20.0
 }, {
@@ -351,17 +351,14 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7j0b"]
-size = Vector2(5.33333, 18)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jee8n"]
+size = Vector2(8, 18)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_53rde"]
-size = Vector2(31.3333, 28.6667)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffi06"]
+size = Vector2(27.25, 24.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_su3y7"]
-size = Vector2(2, 2)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_g7j0b"]
-radius = 132.668
+size = Vector2(3, 2.66667)
 
 [node name="knight" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -372,18 +369,19 @@ script = ExtResource("1_su3y7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_velcg")
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.33333, 3)
-shape = SubResource("RectangleShape2D_g7j0b")
+position = Vector2(-3, 3)
+shape = SubResource("RectangleShape2D_jee8n")
 
 [node name="Ataque" type="Area2D" parent="."]
-collision_layer = 64
+collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ataque"]
-position = Vector2(3.667, -2)
-shape = SubResource("RectangleShape2D_53rde")
+position = Vector2(6, -3.33333)
+shape = SubResource("RectangleShape2D_ffi06")
 disabled = true
 
 [node name="core" type="Area2D" parent="."]
@@ -391,13 +389,12 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="core"]
-position = Vector2(0.333333, -1)
+position = Vector2(1.33333, -0.666667)
 shape = SubResource("RectangleShape2D_su3y7")
 
 [node name="ColorRect" type="ColorRect" parent="core/CollisionShape2D"]
-offset_left = -1.0
+offset_left = -2.0
 offset_top = -1.0
-offset_right = 1.0
 offset_bottom = 1.0
 color = Color(1, 0, 0.341176, 0.411765)
 
@@ -432,7 +429,7 @@ one_shot = true
 
 [node name="range" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
-target_position = Vector2(18, 0)
+target_position = Vector2(20, 0)
 collision_mask = 128
 
 [node name="cooldown" type="Timer" parent="."]
@@ -446,18 +443,8 @@ one_shot = true
 [node name="Explosion" parent="." instance=ExtResource("8_d1kg2")]
 position = Vector2(2, 2)
 
-[node name="RadioDetection" type="Area2D" parent="."]
-position = Vector2(38, 0)
-collision_layer = 0
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RadioDetection"]
-position = Vector2(-38, 0)
-shape = SubResource("CircleShape2D_g7j0b")
-
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Ataque" to="." method="_on_ataque_body_entered"]
 [connection signal="timeout" from="iFrames" to="." method="_on_i_frames_timeout"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="attack_hitbox" to="." method="_on_attack_hitbox_timeout"]
-[connection signal="body_entered" from="RadioDetection" to="." method="_on_radio_detection_body_entered"]

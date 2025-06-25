@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://djmmeokr07dd0"]
+[gd_scene load_steps=3 format=3 uid="uid://djmmeokr07dd0"]
 
 [ext_resource type="Script" uid="uid://chkpit1nwlquc" path="res://src/scripts/hit_manager.gd" id="1_75tul"]
+[ext_resource type="PackedScene" uid="uid://dik3krenvwg7w" path="res://src/components/progress_bar.tscn" id="2_18iwv"]
 
-[node name="HitManager" type="Node"]
+[node name="HitManager" type="Node2D"]
 script = ExtResource("1_75tul")
+
+[node name="ProgressBar" parent="." instance=ExtResource("2_18iwv")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 218.0
+offset_bottom = 23.0
+max_value = 1.0
