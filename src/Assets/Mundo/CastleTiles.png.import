@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqucf4q0yg4n4"
-path="res://.godot/imported/Mariiiiiiiiio.jpg-ac449a0cf87ef37c7313593acb92c22f.ctex"
+uid="uid://c1ym7tun1rxil"
+path="res://.godot/imported/CastleTiles.png-5c43d8a4a9f561148c80d56868d06f40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Assets/Mundo/Mariiiiiiiiio.jpg"
-dest_files=["res://.godot/imported/Mariiiiiiiiio.jpg-ac449a0cf87ef37c7313593acb92c22f.ctex"]
+source_file="res://src/Assets/Mundo/CastleTiles.png"
+dest_files=["res://.godot/imported/CastleTiles.png-5c43d8a4a9f561148c80d56868d06f40.ctex"]
 
 [params]
 

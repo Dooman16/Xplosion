@@ -27,7 +27,9 @@ texture = ExtResource("2_ltfsh")
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = 3.14159
 scale = Vector2(14.5854, -1.6535)
-limit_smoothed = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 0
 
 [connection signal="area_entered" from="Xplosion" to="." method="_on_area_entered"]
 [connection signal="body_entered" from="Xplosion" to="." method="_on_body_entered"]

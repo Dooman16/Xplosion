@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 const velocidad = 100
-const velocidadSalto = -200
+const velocidadSalto = -500
 const KNOCKBACK_SPEED = Vector2(40,-100)
-const DAMAGE = 20
+const DAMAGE = 40
 var dirMov := Enums.direction.RIGHT
 var estaVivo:bool = true
 var attacking:bool = false
@@ -20,6 +20,7 @@ func _ready() -> void:
 
 	
 func _physics_process(delta):
+	
 	if estaVivo and not attacking:
 		if not is_on_floor():
 			velocity += get_gravity()*delta
@@ -36,7 +37,7 @@ func _physics_process(delta):
 			if $wall.is_colliding() and not $jump_check.is_colliding():
 				animation.play("jump")
 				velocity.y += velocidadSalto
-			elif $wall.is_colliding():
+			elif $wall.is_colliding() or $jump_check.is_colliding():
 				change_direction()
 		move_and_slide()
 		if velocity.x != 0 and is_on_floor():
@@ -48,22 +49,15 @@ func disable_hitbox(x_direction):
 	$core/CollisionShape2D.disabled = true
 	$CollisionShape2D.disabled = true
 	velocity = KNOCKBACK_SPEED
-	if x_direction == 1 and dirMov == Enums.direction.LEFT:
-		animation.play("hit_front")
-	else:
-		animation.play("hit_back")
+	animation.play("hit")
 	velocity.x *= x_direction
 	$iFrames.start()
 
 func attack():
 	attacking = true
-	animation.position.y -= 3 
 	$attack_hitbox.start()
 	animation.play("attack")
 	$cooldown.start()
-	await  get_tree().create_timer(0.6).timeout
-	if estaVivo:
-		animation.position.y += 3 
 
 func change_direction():
 	if dirMov == Enums.direction.LEFT:
@@ -100,7 +94,7 @@ func _on_cooldown_timeout() -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if estaVivo:
-		animation.play("default")
+		$AnimatedSprite2D.play("default")
 	
 
 

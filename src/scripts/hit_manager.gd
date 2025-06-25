@@ -11,6 +11,7 @@ signal Hitted
 func _ready():
 	life = MAX_LIFE
 	core_hit_amount = MAX_CORE_HIT_AMOUNT
+	actualizarBarra()
 
 func what_to_do_if_you_get_hit(type, damage, origin):
 	var x_diference = managable_entity.global_position.x - origin.x
@@ -23,9 +24,12 @@ func what_to_do_if_you_get_hit(type, damage, origin):
 		life -= int(MAX_LIFE / MAX_CORE_HIT_AMOUNT)
 	else:
 		life -= damage
-	emit_signal("Hitted")
+	actualizarBarra()
 	if life <= 0 or core_hit_amount <= 0:
 		kill()
 
 func kill():
 	managable_entity.kill()
+
+func actualizarBarra():
+	$ProgressBar.value=float(life)/float(MAX_LIFE)
