@@ -8,8 +8,6 @@ var dirMov := Enums.direction.RIGHT
 var estaVivo:bool = true
 var attacking:bool = false
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var raycast2dDerecho: RayCast2D = $RayCast2DDerecho
-@onready var raycast2dIzuierdo: RayCast2D = $RayCast2DIzuierdo
 @onready var animation := $AnimatedSprite2D
 @onready var explosion := $Explosion
 
@@ -27,12 +25,8 @@ func _physics_process(delta):
 		if $iFrames.is_stopped():
 			if dirMov == Enums.direction.RIGHT:
 				velocity.x = velocidad
-				if not raycast2dDerecho.is_colliding() and is_on_floor():
-					change_direction()
 			else:
 				velocity.x = -1 * velocidad
-				if not raycast2dIzuierdo.is_colliding() and is_on_floor():
-					change_direction()
 		if is_on_floor():
 			if $wall.is_colliding() and not $jump_check.is_colliding():
 				animation.play("jump")
@@ -111,3 +105,4 @@ func _on_radio_detection_body_entered(body: Node2D) -> void:
 	var posistion_diference = body.global_position.x - global_position.x
 	if (posistion_diference < 0 and dirMov == Enums.direction.RIGHT) or (posistion_diference > 0 and dirMov == Enums.direction.LEFT):
 		change_direction()
+	print("gola")

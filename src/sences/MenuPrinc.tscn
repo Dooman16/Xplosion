@@ -39,6 +39,7 @@ theme_override_fonts/font = ExtResource("3_hekm7")
 
 [node name="salir" type="Button" parent="Panel"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 45.2024
 offset_top = 108.172
 offset_right = 117.202
@@ -48,6 +49,7 @@ theme_override_fonts/font = ExtResource("3_hekm7")
 
 [node name="ajustes" type="Button" parent="Panel"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 45.2024
 offset_top = 53.4185
 offset_right = 117.202

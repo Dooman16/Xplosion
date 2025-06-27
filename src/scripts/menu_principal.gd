@@ -1,7 +1,7 @@
 extends Control
 
 func _on_juagr_pressed() -> void:
-	get_tree().change_scene_to_file("res://src/sences/world.tscn")
+	get_tree().change_scene_to_file("res://src/sences/world2.tscn")
 	
 func _on_salir_pressed() -> void:
 	get_tree().quit() 

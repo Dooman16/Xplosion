@@ -12,6 +12,7 @@ var attacking:bool = false
 @onready var raycast2dIzuierdo: RayCast2D = $RayCast2DIzuierdo
 @onready var animation := $AnimatedSprite2D
 @onready var explosion := $Explosion
+var player = null
 
 func _ready() -> void:
 	animation.play("default")
@@ -21,6 +22,8 @@ func _ready() -> void:
 	
 func _physics_process(delta):
 	if estaVivo and not attacking:
+		if player != null:
+			change_dir_using_player()
 		if not is_on_floor():
 			velocity += get_gravity()*delta
 		if $iFrames.is_stopped():
@@ -114,6 +117,13 @@ func _on_attack_hitbox_timeout() -> void:
 
 
 func _on_radio_detection_body_entered(body: Node2D) -> void:
-	var posistion_diference = body.global_position.x - global_position.x
-	if (posistion_diference < 0 and dirMov == Enums.direction.RIGHT) or (posistion_diference > 0 and dirMov == Enums.direction.LEFT):
-		change_direction()
+	player = body
+
+func change_dir_using_player():
+	if player != null:
+		var posistion_diference = player.global_position.x - global_position.x
+		if (posistion_diference < 0 and dirMov == Enums.direction.RIGHT) or (posistion_diference > 0 and dirMov == Enums.direction.LEFT):
+			change_direction()
+
+func _on_radio_detection_body_exited(body: Node2D) -> void:
+	player = null

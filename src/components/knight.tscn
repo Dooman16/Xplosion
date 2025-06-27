@@ -352,7 +352,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7j0b"]
-size = Vector2(5.33333, 18)
+size = Vector2(6, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53rde"]
 size = Vector2(31.3333, 28.6667)
@@ -361,7 +361,7 @@ size = Vector2(31.3333, 28.6667)
 size = Vector2(2, 2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g7j0b"]
-radius = 132.668
+radius = 60.0629
 
 [node name="knight" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -374,7 +374,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_velcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.33333, 3)
+position = Vector2(-3, 3)
 shape = SubResource("RectangleShape2D_g7j0b")
 
 [node name="Ataque" type="Area2D" parent="."]
@@ -406,11 +406,11 @@ stream = ExtResource("3_43vwg")
 volume_db = -29.293
 
 [node name="RayCast2DDerecho" type="RayCast2D" parent="."]
-position = Vector2(5, 12)
+position = Vector2(0, 12)
 target_position = Vector2(0, 20)
 
 [node name="RayCast2DIzuierdo" type="RayCast2D" parent="."]
-position = Vector2(-10, 12)
+position = Vector2(-6, 12)
 target_position = Vector2(0, 20)
 
 [node name="HitManager" parent="." instance=ExtResource("6_m87qa")]
@@ -461,3 +461,4 @@ shape = SubResource("CircleShape2D_g7j0b")
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="attack_hitbox" to="." method="_on_attack_hitbox_timeout"]
 [connection signal="body_entered" from="RadioDetection" to="." method="_on_radio_detection_body_entered"]
+[connection signal="body_exited" from="RadioDetection" to="." method="_on_radio_detection_body_exited"]
