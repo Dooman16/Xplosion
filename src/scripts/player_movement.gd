@@ -7,6 +7,7 @@ const KNOCKBACK_SPEED = Vector2(100,-200)
 @onready var coyote_time: Timer = $CoyoteTime
 @onready var input_buffer: Timer = $InputBuffer
 @onready var animations: AnimatedSprite2D = $Animations
+const MUERTE_PJ = preload("res://src/Sounds/Sonidos/MuertePj.mp3")
 
 signal on_player_jump
 signal death
@@ -82,6 +83,7 @@ func _physics_process(delta: float) -> void:
 		animations.play("walk")
 	
 	was_on_floor = is_on_floor()
+	
 	move_and_slide()
 
 func slow_upward_movement():
@@ -123,4 +125,9 @@ func _on_i_frames_timeout() -> void:
 	$CollisionShape2D.disabled = false
 
 func kill():
+	var sound := AudioStreamPlayer.new()
+	sound.stream = MUERTE_PJ
+	add_child(sound)
+	sound.play()
+	await sound.finished
 	get_tree().change_scene_to_file("res://src/sences/MenuPrinc.tscn")

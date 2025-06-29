@@ -20,6 +20,7 @@ texture = ExtResource("2_81ddg")
 
 [node name="Panel2" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 84.0
 offset_top = 106.0
 offset_right = 443.0
@@ -38,6 +39,7 @@ theme_override_fonts/font = ExtResource("3_r6dbm")
 
 [node name="reiniciar" type="Button" parent="Panel2"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 45.2024
 offset_top = 48.0766
 offset_right = 117.202
@@ -47,6 +49,7 @@ theme_override_fonts/font = ExtResource("3_r6dbm")
 
 [node name="salir" type="Button" parent="Panel2"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 45.2024
 offset_top = 94.8178
 offset_right = 117.202
