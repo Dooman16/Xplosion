@@ -21,6 +21,7 @@ var is_jumping_held = false
 var is_y_velocity_reset = false
 var jumped_this_frame = false
 var jumped_last_frame = false
+signal defeated
 
 func _ready() -> void:
 	$HitManager.managable_entity = self
@@ -125,6 +126,7 @@ func _on_i_frames_timeout() -> void:
 	$CollisionShape2D.disabled = false
 
 func kill():
+	emit_signal("defeated")
 	var sound := AudioStreamPlayer.new()
 	sound.stream = MUERTE_PJ
 	add_child(sound)

@@ -14,6 +14,7 @@ var attacking:bool = false
 @onready var explosion := $Explosion
 @onready var SuperEnemy: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 const MUERTE_ENEMIGO = preload("res://src/Sounds/Sonidos/MuerteEnemigo.mp3")
+signal JefeDerrotado
 
 func _ready() -> void:
 	animation.play("default")
@@ -87,6 +88,8 @@ func kill():
 	add_child(sound)
 	sound.play()
 	await sound.finished
+	
+	emit_signal("JefeDerrotado")
 	queue_free()
 
 
