@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://d1clh4nyw8eq0" path="res://src/sences/resutuque.tscn" id="3_rouwj"]
 [ext_resource type="Texture2D" uid="uid://baonvoi2e32s3" path="res://src/Assets/tilesetOscuro.png" id="4_mb26c"]
 [ext_resource type="Texture2D" uid="uid://c1ym7tun1rxil" path="res://src/Assets/Mundo/CastleTiles.png" id="5_1ybu5"]
-[ext_resource type="AudioStream" uid="uid://cq4aphmfyaqs5" path="res://src/Assets/Sounds/jump-15984.mp3" id="6_kel50"]
-[ext_resource type="AudioStream" uid="uid://bbn4lhb1uxq04" path="res://src/Assets/Sounds/collect-ring-15982.mp3" id="7_aeaxp"]
-[ext_resource type="AudioStream" uid="uid://bwcymij3sw0k0" path="res://src/Assets/Sounds/negative_beeps-6008.mp3" id="8_l53ds"]
-[ext_resource type="AudioStream" uid="uid://bgt4t5rc6gv8f" path="res://src/Assets/Sounds/dead-8bit-41400.mp3" id="9_rsif8"]
+[ext_resource type="AudioStream" uid="uid://cq4aphmfyaqs5" path="res://src/Sounds/jump-15984.mp3" id="6_kel50"]
+[ext_resource type="AudioStream" uid="uid://bbn4lhb1uxq04" path="res://src/Sounds/collect-ring-15982.mp3" id="7_aeaxp"]
+[ext_resource type="AudioStream" uid="uid://bwcymij3sw0k0" path="res://src/Sounds/negative_beeps-6008.mp3" id="8_l53ds"]
+[ext_resource type="AudioStream" uid="uid://bgt4t5rc6gv8f" path="res://src/Sounds/dead-8bit-41400.mp3" id="9_rsif8"]
 [ext_resource type="PackedScene" uid="uid://c1bbvccq21mnp" path="res://src/components/knight.tscn" id="10_rentv"]
 [ext_resource type="PackedScene" uid="uid://js4nbtg28sii" path="res://src/components/boss.tscn" id="11_i10kq"]
-[ext_resource type="AudioStream" uid="uid://dt5phdtsjn8ie" path="res://src/Assets/Sounds/Sonidos/Juego.mp3" id="12_hy577"]
+[ext_resource type="AudioStream" uid="uid://dt5phdtsjn8ie" path="res://src/Sounds/Sonidos/Juego.mp3" id="12_hy577"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ek4u"]
 

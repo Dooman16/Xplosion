@@ -30,8 +30,8 @@ enum state{
 	ATTACH
 }
 
-@onready var sonido_cargarLanza := preload("res://src/Sounds/Sonidos/CargarLanza.mp3")
-@onready var sonido_GolpeLanza := preload("res://src/Sounds/Sonidos/GolpeLanza.mp3")
+@onready var sonido_cargarLanza := preload("res://src/Assets/Sounds/Sonidos/CargarLanza.mp3")
+@onready var sonido_GolpeLanza := preload("res://src/Assets/Sounds/Sonidos/GolpeLanza.mp3")
 
 
 func _ready():

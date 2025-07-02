@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dusa47er710fc" path="res://src/scripts/knight.gd" id="1_su3y7"]
 [ext_resource type="Texture2D" uid="uid://bj2i3pvy6mqoc" path="res://src/Assets/Enemies/enemigo Basico/Attack 1.png" id="2_jee8n"]
 [ext_resource type="Texture2D" uid="uid://12gottr6p8ef" path="res://src/Assets/Enemies/enemigo Basico/Combat Ready Idle.png" id="3_2gnxo"]
-[ext_resource type="AudioStream" uid="uid://bchp2fsuiblji" path="res://src/Sounds/trench-club-1-101551.mp3" id="3_43vwg"]
+[ext_resource type="AudioStream" uid="uid://bchp2fsuiblji" path="res://src/Assets/Sounds/trench-club-1-101551.mp3" id="3_43vwg"]
 [ext_resource type="Texture2D" uid="uid://dlkap36sa002m" path="res://src/Assets/Enemies/enemigo Basico/Roll.png" id="3_g7j0b"]
 [ext_resource type="Texture2D" uid="uid://u136on1f3h3y" path="res://src/Assets/Enemies/enemigo Basico/Jump.png" id="4_12h8n"]
 [ext_resource type="Texture2D" uid="uid://csv5eboioksrh" path="res://src/Assets/Enemies/enemigo Basico/Hit Back.png" id="4_f11dw"]

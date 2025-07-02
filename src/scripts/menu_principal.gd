@@ -1,6 +1,6 @@
 extends Control
 
-@onready var sonido_boton := preload("res://src/Sounds/Sonidos/Boton.mp3")
+@onready var sonido_boton := preload("res://src/Assets/Sounds/Sonidos/Boton.mp3")
 
 func _on_salir_pressed() -> void:
 	var sound := AudioStreamPlayer.new()

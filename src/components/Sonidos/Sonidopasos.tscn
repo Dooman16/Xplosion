@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3x4yc3yjfn7g"]
 
-[ext_resource type="AudioStream" uid="uid://dl85ar2vj8wu6" path="res://src/Sounds/Sonidos/Boton.mp3" id="1_iupuf"]
+[ext_resource type="AudioStream" uid="uid://cwsopohsnceal" path="res://src/Assets/Sounds/Sonidos/PasosPj.mp3" id="1_iupuf"]
 
-[node name="Boton" type="AudioStreamPlayer2D"]
+[node name="Pasos" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_iupuf")
-autoplay = true
+volume_db = 24.0

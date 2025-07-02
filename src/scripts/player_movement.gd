@@ -7,8 +7,8 @@ const KNOCKBACK_SPEED = Vector2(100,-200)
 @onready var coyote_time: Timer = $CoyoteTime
 @onready var input_buffer: Timer = $InputBuffer
 @onready var animations: AnimatedSprite2D = $Animations
-const MUERTE_PJ = preload("res://src/Sounds/Sonidos/MuertePj.mp3")
-
+const MUERTE_PJ = preload("res://src/Assets/Sounds/Sonidos/MuertePj.mp3")
+@onready var pasos: AudioStreamPlayer2D = $Pasos
 signal on_player_jump
 signal death
 
@@ -21,10 +21,10 @@ var is_jumping_held = false
 var is_y_velocity_reset = false
 var jumped_this_frame = false
 var jumped_last_frame = false
+signal defeated
 
 func _ready() -> void:
 	$HitManager.managable_entity = self
-	
 #hay un bug que te deja hacer doble salto si ambos timers no terminan lol!!!!!
 func _physics_process(delta: float) -> void:
 
@@ -81,6 +81,7 @@ func _physics_process(delta: float) -> void:
 		animations.play("idle")
 	else:
 		animations.play("walk")
+		pasos.play()
 	
 	was_on_floor = is_on_floor()
 	
@@ -124,10 +125,11 @@ func reset_position(destination):
 func _on_i_frames_timeout() -> void:
 	$CollisionShape2D.disabled = false
 
-func kill():
+func kill():	
+	emit_signal("death")	
 	var sound := AudioStreamPlayer.new()
 	sound.stream = MUERTE_PJ
 	add_child(sound)
 	sound.play()
 	await sound.finished
-	get_tree().change_scene_to_file("res://src/sences/MenuPrinc.tscn")
+	
