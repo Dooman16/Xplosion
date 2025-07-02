@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnd4crwurplyl"]
+
+[ext_resource type="AudioStream" uid="uid://bls57jguhh3el" path="res://src/Sounds/Sonidos/Golpe.mp3" id="1_xuhds"]
+
+[node name="Boton" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_xuhds")
+autoplay = true

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://vda3y6o88pxt"]
+
+[ext_resource type="AudioStream" uid="uid://bdycnqfugwmo2" path="res://src/Sounds/Sonidos/MuerteEnemigo.mp3" id="1_fl2le"]
+
+[node name="Boton" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_fl2le")
+autoplay = true

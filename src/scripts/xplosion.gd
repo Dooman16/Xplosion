@@ -30,6 +30,10 @@ enum state{
 	ATTACH
 }
 
+@onready var sonido_cargarLanza := preload("res://src/Sounds/Sonidos/CargarLanza.mp3")
+@onready var sonido_GolpeLanza := preload("res://src/Sounds/Sonidos/GolpeLanza.mp3")
+
+
 func _ready():
 	# Conectar señales del área de colisión
 	body.connect("area_entered", Callable(self, "_on_area_entered"))
@@ -60,6 +64,12 @@ func charge_range_attack(delta: float):
 		body.position = STARTING_POS - (charge - (randf() * 2 - 1))*DIRECTION
 	throwing_direction = get_mouse_vectorial_difference().normalized()
 	global_rotation = get_xplosion_rotation(get_mouse_vectorial_difference())
+
+	var sound := AudioStreamPlayer.new()
+	sound.stream = sonido_cargarLanza
+	add_child(sound)
+	sound.play()
+	await sound.finished
 
 func release_range_attack():
 	if charge / MAX_RETRACTION_DISTANCE >= 0.3:
@@ -161,6 +171,12 @@ func what_to_do_if_you_hit_something(something : Node2D):
 	if something.is_in_group("enemies"):
 		if something.estaVivo:
 			something.get_node("HitManager").what_to_do_if_you_get_hit(type,DAMAGE,global_position)
+			
+			var sound := AudioStreamPlayer.new()
+			sound.stream = sonido_GolpeLanza
+			add_child(sound)
+			sound.play()
+			await sound.finished
 	disable_hitbox()
 	if speed > 0:
 		return_lance()

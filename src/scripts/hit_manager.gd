@@ -2,7 +2,7 @@ extends Node
 
 @export var MAX_LIFE : int 
 @export var MAX_CORE_HIT_AMOUNT : int 
-
+const GOLPE = preload("res://src/Sounds/Sonidos/Golpe.mp3")
 var life : int
 var core_hit_amount : int
 var managable_entity : Node2D
@@ -24,7 +24,13 @@ func what_to_do_if_you_get_hit(type, damage, origin):
 		life -= int(MAX_LIFE / MAX_CORE_HIT_AMOUNT)
 	else:
 		life -= damage
+		var sound := AudioStreamPlayer.new()
+		sound.stream = GOLPE
+		add_child(sound)
+		sound.play()
+		await sound.finished
 	actualizarBarra()
+	
 	if life <= 0 or core_hit_amount <= 0:
 		kill()
 
