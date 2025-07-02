@@ -12,6 +12,7 @@ var attacking:bool = false
 @onready var raycast2dIzuierdo: RayCast2D = $RayCast2DIzuierdo
 @onready var animation := $AnimatedSprite2D
 @onready var explosion := $Explosion
+const MUERTE_ENEMIGO = preload("res://src/Sounds/Sonidos/MuerteEnemigo.mp3")
 
 func _ready() -> void:
 	animation.play("default")
@@ -85,6 +86,13 @@ func kill():
 	animation.global_position = pos_save
 	explosion.global_position = pos_explosion_save
 	animation.global_scale = Vector2(1.5,1.5)
+	
+	var sound := AudioStreamPlayer.new()
+	sound.stream = MUERTE_ENEMIGO
+	add_child(sound)
+	sound.play()
+	await sound.finished
+	
 	queue_free()
 
 

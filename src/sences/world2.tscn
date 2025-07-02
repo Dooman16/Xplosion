@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dtr1mq6hoy62u"]
+[gd_scene load_steps=18 format=4 uid="uid://dtr1mq6hoy62u"]
 
 [ext_resource type="PackedScene" uid="uid://dqyu60546624r" path="res://src/components/BaldMan.tscn" id="1_md7sr"]
 [ext_resource type="PackedScene" uid="uid://dd55g1kotoyaj" path="res://src/sences/menu_pausa.tscn" id="2_hy577"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bgt4t5rc6gv8f" path="res://src/Sounds/dead-8bit-41400.mp3" id="9_rsif8"]
 [ext_resource type="PackedScene" uid="uid://c1bbvccq21mnp" path="res://src/components/knight.tscn" id="10_rentv"]
 [ext_resource type="PackedScene" uid="uid://js4nbtg28sii" path="res://src/components/boss.tscn" id="11_i10kq"]
+[ext_resource type="AudioStream" uid="uid://dt5phdtsjn8ie" path="res://src/Sounds/Sonidos/Juego.mp3" id="12_hy577"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ek4u"]
 
@@ -11809,44 +11810,50 @@ stream = ExtResource("9_rsif8")
 volume_db = -5.748
 autoplay = true
 
-[node name="knight2" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="Enemigos" type="Node" parent="."]
+
+[node name="knight2" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(892, 189)
 
-[node name="knight" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(338, 186)
 
-[node name="knight3" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight3" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(1370, 182)
 
-[node name="knight4" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight4" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(1380, 11)
 
-[node name="knight5" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight5" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(1882, 174)
 
-[node name="knight6" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight6" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(2340, 186)
 
-[node name="knight7" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight7" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(2765, 176)
 
-[node name="knight8" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight8" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(3188, 189)
 
-[node name="knight9" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight9" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(3753, 189)
 
-[node name="knight10" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight10" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(4500, 181)
 
-[node name="knight11" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight11" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(5253, 59)
 
-[node name="knight12" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight12" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(5003, 11)
 
-[node name="knight13" parent="." groups=["enemies"] instance=ExtResource("10_rentv")]
+[node name="knight13" parent="Enemigos" groups=["enemies"] instance=ExtResource("10_rentv")]
 position = Vector2(5659, 58)
 
-[node name="boss" parent="." groups=["enemies"] instance=ExtResource("11_i10kq")]
+[node name="boss" parent="Enemigos" groups=["enemies"] instance=ExtResource("11_i10kq")]
 position = Vector2(5048, 158)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_hy577")
+autoplay = true
