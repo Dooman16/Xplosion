@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dp2kbskf7w50d" path="res://src/Assets/boss/KnightIdle-Sheet.png" id="6_5nxgl"]
 [ext_resource type="Texture2D" uid="uid://bqdq70ttkwns3" path="res://src/Assets/boss/KnightRun-Sheet.png" id="7_eci1l"]
 [ext_resource type="Texture2D" uid="uid://djotd0cs4on7" path="res://src/Assets/boss/KnightHurt-Sheet.png" id="7_kk281"]
-[ext_resource type="AudioStream" uid="uid://bchp2fsuiblji" path="res://src/Sounds/trench-club-1-101551.mp3" id="8_qe1t3"]
+[ext_resource type="AudioStream" uid="uid://bchp2fsuiblji" path="res://src/Assets/Sounds/trench-club-1-101551.mp3" id="8_qe1t3"]
 [ext_resource type="PackedScene" uid="uid://djmmeokr07dd0" path="res://src/components/hit_manager.tscn" id="9_gbh74"]
 [ext_resource type="PackedScene" uid="uid://dh4bysykw2gw6" path="res://src/components/explosion.tscn" id="10_bror2"]
-[ext_resource type="AudioStream" uid="uid://dgpes8i45kplh" path="res://src/Sounds/Sonidos/SonidoEnemigo.mp3" id="12_q01nh"]
+[ext_resource type="AudioStream" uid="uid://dgpes8i45kplh" path="res://src/Assets/Sounds/Sonidos/SonidoEnemigo.mp3" id="12_q01nh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lktm"]
 atlas = ExtResource("2_kk281")

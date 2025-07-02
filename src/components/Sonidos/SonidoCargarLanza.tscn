@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfr7knnbnhx73"]
 
-[ext_resource type="AudioStream" uid="uid://cpgfrdk3bl8po" path="res://src/Sounds/Sonidos/CargarLanza.mp3" id="1_tx827"]
+[ext_resource type="AudioStream" uid="uid://cpgfrdk3bl8po" path="res://src/Assets/Sounds/Sonidos/CargarLanza.mp3" id="1_tx827"]
 
 [node name="Boton" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_tx827")

@@ -2,7 +2,7 @@ extends Node
 
 @export var MAX_LIFE : int 
 @export var MAX_CORE_HIT_AMOUNT : int 
-const GOLPE = preload("res://src/Sounds/Sonidos/Golpe.mp3")
+const GOLPE = preload("res://src/Assets/Sounds/Sonidos/Golpe.mp3")
 var life : int
 var core_hit_amount : int
 var managable_entity : Node2D

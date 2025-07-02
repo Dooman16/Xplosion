@@ -1,26 +1,30 @@
 extends Control
 
-@onready var mario: CharacterBody2D = $"../../Elementos/Mario"
-@onready var jefe := $"../../Elementos/Jefe"  # Ajustá esta ruta según tu árbol de nodos
+@onready var boss: CharacterBody2D = $"../../Elementos/Enemigos/boss"
+@onready var jugador: CharacterBody2D = $"../../Elementos/Mario"
 @onready var MostradorTexto: Label = $Label
+@onready var color_rect: ColorRect = $ColorRect
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+const MENU_MUERTE = preload("res://src/Assets/Sounds/Sonidos/MenuMuerte.mp3")
+const CROWD_CHEER = preload("res://src/Assets/Sounds/Sonidos/crowd-cheer-applause-victory-fanfare-clapping-236698.mp3")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
-	if mario:
-		mario.death.connect(on_muerte)
-
-	if jefe:
-		jefe.defeated.connect(on_victoria)
+	jugador.death.connect(on_muerte)
+	boss.JefeDerrotado.connect(on_victoria)
 
 	visible = false
 
 func on_muerte() -> void:
 	MostradorTexto.text = "Moriste"
+	color_rect.color = Color(1, 0, 0.18, 0.41)
+	audio_stream_player_2d.stream = MENU_MUERTE
 	show_end_screen()
 
 func on_victoria() -> void:
 	MostradorTexto.text = "Victoria"
+	color_rect.color = Color(0, 0.55, 0.15, 0.41)
+	audio_stream_player_2d.stream = CROWD_CHEER
 	show_end_screen()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -29,6 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func show_end_screen() -> void:
 	visible = true
+	audio_stream_player_2d.play()
 	get_tree().paused = true
 
 func resume() -> void:

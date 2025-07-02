@@ -12,7 +12,7 @@ var attacking:bool = false
 @onready var raycast2dIzuierdo: RayCast2D = $RayCast2DIzuierdo
 @onready var animation := $AnimatedSprite2D
 @onready var explosion := $Explosion
-const MUERTE_ENEMIGO = preload("res://src/Sounds/Sonidos/MuerteEnemigo.mp3")
+const MUERTE_ENEMIGO = preload("res://src/Assets/Sounds/Sonidos/MuerteEnemigo.mp3")
 
 func _ready() -> void:
 	animation.play("default")
