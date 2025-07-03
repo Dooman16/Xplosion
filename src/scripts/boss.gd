@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal weapon_detected
 const velocidad = 100
 const velocidadSalto = -500
 const KNOCKBACK_SPEED = Vector2(40,-100)
@@ -19,7 +20,7 @@ func _ready() -> void:
 	
 func _physics_process(delta):
 	
-	if estaVivo and not attacking:
+	if estaVivo and not attacking and $"protection time".is_stopped() and $stunned.is_stopped():
 		if not is_on_floor():
 			velocity += get_gravity()*delta
 		if $iFrames.is_stopped():
@@ -93,7 +94,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_ataque_body_entered(body: Node2D) -> void:
-	if estaVivo:
+	if estaVivo and $"protection time".is_stopped() and $stunned.is_stopped():
 		body.get_node("HitManager").what_to_do_if_you_get_hit(Enums.type.BODY,DAMAGE,global_position)
 
 
@@ -105,4 +106,29 @@ func _on_radio_detection_body_entered(body: Node2D) -> void:
 	var posistion_diference = body.global_position.x - global_position.x
 	if (posistion_diference < 0 and dirMov == Enums.direction.RIGHT) or (posistion_diference > 0 and dirMov == Enums.direction.LEFT):
 		change_direction()
-	print("gola")
+
+
+func _on_shield_range_area_entered(area: Area2D) -> void:
+	if area.name == "Xplosion" and $stunned.is_stopped():
+		$shield/CollisionShape2D.disabled = false
+		animation.play("block")
+		$"protection time".start()	
+
+
+func _on_protection_time_timeout() -> void:
+	disable_shield()
+	
+
+
+func _on_shield_area_entered(area: Area2D) -> void:
+	if area.name == "Xplosion":
+		animation.play("blocked_hit")
+		var xplosion = get_parent().get_node("Elementos/Mario/Xplosion")
+		if xplosion.meleeing:
+			$stunned.start()
+			animation.play("default")
+			disable_shield()
+
+func disable_shield():
+	$shield/CollisionShape2D.disabled = true
+	$"protection time".stop()

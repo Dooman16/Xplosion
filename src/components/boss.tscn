@@ -172,7 +172,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"block",
-"speed": 1.0
+"speed": 0.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -294,10 +294,10 @@ size = Vector2(2.33333, 12)
 radius = 132.668
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_psqam"]
-size = Vector2(12.6667, 52.6667)
+size = Vector2(12.6667, 69)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nxgl"]
-size = Vector2(96.6667, 54.6667)
+size = Vector2(40.6666, 71)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01nh"]
 size = Vector2(24.667, 11)
@@ -312,8 +312,7 @@ script = ExtResource("1_kk281")
 texture_filter = 1
 position = Vector2(6.66667, -2.33333)
 sprite_frames = SubResource("SpriteFrames_2ciil")
-animation = &"walk"
-frame_progress = 0.233332
+animation = &"block"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.333337, -5.49999)
@@ -390,29 +389,37 @@ collision_layer = 0
 collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioDetection"]
-visible = false
 position = Vector2(-38, 0)
 shape = SubResource("CircleShape2D_g7j0b")
 
 [node name="shield" type="Area2D" parent="."]
 position = Vector2(10, -23)
+collision_layer = 65
+collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shield"]
-position = Vector2(4.33333, 25)
+position = Vector2(4.33333, 16.8333)
 shape = SubResource("RectangleShape2D_psqam")
-disabled = true
 
 [node name="shieldRange" type="Area2D" parent="."]
 position = Vector2(6.66667, -2.33333)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shieldRange"]
-position = Vector2(49.6667, 5.33333)
+position = Vector2(21.6667, -2.83333)
 shape = SubResource("RectangleShape2D_5nxgl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(7, 24.1)
 shape = SubResource("RectangleShape2D_q01nh")
+
+[node name="protection time" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="stunned" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Ataque" to="." method="_on_ataque_body_entered"]
@@ -420,3 +427,6 @@ shape = SubResource("RectangleShape2D_q01nh")
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="attack_hitbox" to="." method="_on_attack_hitbox_timeout"]
 [connection signal="body_entered" from="RadioDetection" to="." method="_on_radio_detection_body_entered"]
+[connection signal="area_entered" from="shield" to="." method="_on_shield_area_entered"]
+[connection signal="area_entered" from="shieldRange" to="." method="_on_shield_range_area_entered"]
+[connection signal="timeout" from="protection time" to="." method="_on_protection_time_timeout"]

@@ -1,3 +1,4 @@
+class_name Xplosion
 extends Node2D
 
 @onready var body := $Xplosion
